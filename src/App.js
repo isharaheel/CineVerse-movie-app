@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Navbar from './components/navbar/Navbar';
+import MovieList from './components/movielist/MovieList';
+// import MainLayout from './components/main/MainLayout'
+import Main from './components/afNav/AfNav';
+// import Navbar from './components/Navbar';
+// import MovieList from './components/MovieList';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ backgroundColor: '#121212', minHeight: '100vh' }}>
+    
+      {/* Navbar ko hum center content ke upar rakhenge */}
+      <Navbar /> 
+<Main/>
+
+      {/* <MainLayout border='1px solid red'>
+      <MovieList />
+    </MainLayout> */}
     </div>
   );
 }
 
 export default App;
+
+
