@@ -45,7 +45,7 @@ export default function HeroSec() {
 
         <Typography 
           variant="body2" 
-          sx={{ color: '#bbb', mb: 1.5, fontSize: '13px', maxWidth: '400px', lineHeight: 1.4 }}
+          sx={{ color: {xs:'black',sm:'black',md:'#bbb',lg:'#bbb'}, mb: 1.5, fontSize: '13px', maxWidth: '400px', lineHeight: 1.4 }}
         >
           A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.
         </Typography>
@@ -80,7 +80,8 @@ export default function HeroSec() {
               color: 'white',
               borderColor: '#444',
               borderRadius: '20px',
-              px: 2.5, fontSize: '13px',
+              px: {xs:1 ,sm:2,md:2,lg:2.5},
+              fontSize: '13px',
               textTransform: 'none',
               backgroundColor: 'rgba(255,255,255,0.05)',
               '&:hover': { borderColor: 'white', backgroundColor: 'rgba(255,255,255,0.1)' }

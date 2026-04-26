@@ -24,16 +24,16 @@ export default function Navbar () {
             <Toolbar sx={{ 
                 display: 'flex', 
                 justifyContent: 'space-between',
-                gap: { xs: 1, md: 2 }, // Mobile par elements ke beech thoda gap
+                gap: { xs: 3, md: 2 }, // Mobile par elements ke beech thoda gap
                 px: { xs: 1, md: 3 } // Side padding responsive
             }}>
                 
                 {/* 1. Mobile Menu Icon (Sirf mobile par nazar aayega) */}
-                <IconButton
+                {/* <IconButton
                     sx={{ color: 'white', display: { xs: 'block', md: 'none' }, p: 0 }}
                 >
                     <MenuIcon />
-                </IconButton>
+                </IconButton> */}
 
                 {/* 2. Logo Section - Mobile par variant chota kar diya */}
                 <Typography 
@@ -42,7 +42,7 @@ export default function Navbar () {
                         fontWeight: 'bold', 
                         letterSpacing: '1px',
                         fontSize: { xs: '1.2rem', md: '1.5rem' }, // Responsive font
-                        display: { xs: 'none', sm: 'block' } // Bohat chote mobiles par logo hide kar sakte hain ya rakhein
+                        // display: { xs: 'none', sm: 'block' } // Bohat chote mobiles par logo hide kar sakte hain ya rakhein
                     }}
                 >
                     <span style={{ color: '#fff' }}>Cine</span>
