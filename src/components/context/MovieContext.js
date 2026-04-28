@@ -2,7 +2,7 @@ import React, { createContext, useState, useEffect } from 'react';
 
 export const MovieContext = createContext();
 
-export const MovieProvider = ({ children }) => {
+export default function MovieProvider ({ children }){
     const [movies, setMovies] = useState([]);
     const [searchQuery, setSearchQuery] = useState(''); 
     const [loading, setLoading] = useState(false);
@@ -41,7 +41,6 @@ export const MovieProvider = ({ children }) => {
     }, [searchQuery]);
 
     return (
-        /* Value mein 'setQuery' pass kiya hai jo 'setSearchQuery' ko trigger karega */
         <MovieContext.Provider value={{ movies, setQuery: setSearchQuery, loading, error }}>
             {children}
         </MovieContext.Provider>

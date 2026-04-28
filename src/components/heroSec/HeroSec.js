@@ -4,9 +4,6 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import AddIcon from '@mui/icons-material/Add';
 import StarIcon from '@mui/icons-material/Star';
 
-// Agar image 'src' folder mein hai toh aise import karein:
-// import heroImg from './image/hero1.jpg'; 
-
 export default function HeroSec() {
   return (
     <Box
@@ -16,7 +13,6 @@ export default function HeroSec() {
         height: '270px',
         borderRadius: '15px',
         overflow: 'hidden',
-        // border:'1px solid red',
         mb: 4,
         display: 'flex',
         alignItems: 'center',
@@ -27,7 +23,6 @@ export default function HeroSec() {
         backgroundPosition: 'center',
       }}
     >
-      {/* Text Content */}
       <Box sx={{ maxWidth: '500px', zIndex: 2 }}>
         <Typography 
           variant="caption" 

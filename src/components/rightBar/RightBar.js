@@ -3,7 +3,7 @@ import React from 'react'
 
 
 
-export default function RightBar({ selectedGenreId, setSelectedGenreId }) {
+export default function RightBar({ selectedGenreId, setSelectedGenreId ,mobileView  }) {
 const genres = [
     { id: null, name: 'All' },
     { id: 28, name: 'Action' },
@@ -13,18 +13,14 @@ const genres = [
   ];
   return (
     <Box sx={{ 
-      display: { xs: 'none', md: 'block' }, 
+      display: mobileView ? 'block' : { xs: 'none', md: 'block' }, 
       p: 3, 
-      width: '300px', // Width thodi kam rakhein taake layout fit ho
+      width: {xs:'200px',sm:'220px',lg:'300px'}, 
       background: 'rgb(34,36,35)',
-      borderLeft: '1px solid #222',
-      
-      // STICKY PROPERTIES
-    //   position: 'sticky', 
-    //   top: 0, 
+      borderLeft: '1px solid #222', 
       height: '175vh', 
       zIndex: 10,
-      flexShrink: 0 // Taake flex box ise daba na sakay
+      flexShrink: 0 
     }}>
       <Typography variant="h6" sx={{ mb: 3, fontWeight: 'bold', color: 'whitesmoke' }}>
         Filters
@@ -35,7 +31,11 @@ const genres = [
           <Chip 
             key={genre.name}
             label={genre.name}
-            onClick={() => setSelectedGenreId(genre.id)}
+            // onClick={() => setSelectedGenreId(genre.id)}
+            onClick={() => {
+    console.log("Genre Selected ID:", genre.id);
+    setSelectedGenreId(genre.id);
+}}
             sx={{ 
               backgroundColor: selectedGenreId === genre.id ? '#00bcd4' : 'transparent',
               color: selectedGenreId === genre.id ? 'black' : 'white',

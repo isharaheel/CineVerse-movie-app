@@ -3,24 +3,28 @@ import Navbar from './components/navbar/Navbar';
 import MovieList from './components/movielist/MovieList';
 // import MainLayout from './components/main/MainLayout'
 import Main from './components/afNav/AfNav';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import MovieDetails from './components/Moviedetail/MovieDetail';
 // import Navbar from './components/Navbar';
 // import MovieList from './components/MovieList';
 
-function App() {
+export default function App(params) {
   return (
     <div style={{ backgroundColor: '#121212', minHeight: '100vh' }}>
-    
-      {/* Navbar ko hum center content ke upar rakhenge */}
-      <Navbar /> 
-<Main/>
+      <Router>
+        {/* Navbar hamesha top par rahega, har page par */}
+        <Navbar /> 
 
-      {/* <MainLayout border='1px solid red'>
-      <MovieList />
-    </MainLayout> */}
+        <Routes>
+          {/* Main (jis mein MovieList hai) sirf home page par dikhega */}
+          <Route path="/" element={<Main />} />
+
+          {/* Movie Details page tab dikhega jab card par click hoga */}
+          <Route path="/movie/:id" element={<MovieDetails />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
-
-export default App;
 
 

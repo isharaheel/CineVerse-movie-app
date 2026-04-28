@@ -5,6 +5,7 @@ import HeroSec from '../heroSec/HeroSec.js';
 import CircularProgress, {
   circularProgressClasses,
 } from '@mui/material/CircularProgress';
+import { useNavigate } from 'react-router-dom';
 function GradientCircularProgress() {
   return (
     <React.Fragment>
@@ -23,8 +24,9 @@ function GradientCircularProgress() {
     </React.Fragment>
   );
 }
-const MovieList = ({ selectedGenreId }) => { 
-    const { movies, loading, error } = useContext(MovieContext);
+export default function MovieList ({ selectedGenreId }){
+      const { movies, loading, error } = useContext(MovieContext);
+      const navigate = useNavigate();
 
     const filteredMovies = useMemo(() => {
         if (!movies) return [];
@@ -35,7 +37,7 @@ const MovieList = ({ selectedGenreId }) => {
         );
     }, [movies, selectedGenreId]);
 
-    if (loading) return <h2 style={{ color: 'white', textAlign: 'center', marginTop: '50px' }}>Loading...</h2>;
+    if (loading) return <h2 style={{ color: 'white', textAlign: 'center', marginTop: '50px' }}><GradientCircularProgress/></h2>;
     if (error) return <h2 style={{ color: 'red', textAlign: 'center' }}>{error}</h2>;
 
     return (
@@ -44,13 +46,12 @@ const MovieList = ({ selectedGenreId }) => {
             flexDirection: 'column', 
             gap: '20px', 
             marginTop: '20px',
-            // border:'1px solid red',
-            width:{xs:'100%',sm:'100%',md:"60%",lg:"60%"},
-            alignItems:{xs:'center',sm:'center'}
+            width:{xs:'100%',sm:'100%',md:" 100%",lg:"100%"},
+            alignItems:{xs:'center',sm:'center'},
+            // border:'1px solid red'
         }}>
-            <HeroSec />
+        
 
-            {/* Movies Grid Section */}
             <Box sx={{ 
                 width: {xs:'90%',sm:'100%',md:'97%',lg:'98%'},
                 display: 'grid', 
@@ -58,17 +59,16 @@ const MovieList = ({ selectedGenreId }) => {
                     xs: 'repeat(1, 1fr)',
                     sm: 'repeat(2, 1fr)',
                     md: 'repeat(3, 1fr)',
-                    lg: 'repeat(5, 1fr)' // Desktop par 5 columns
+                    lg: 'repeat(5, 1fr)' 
                 }, 
                 gap: '20px', 
                 padding: '10px',
                 backgroundColor: '#121212',
-                minHeight: 'auto', // Fixed height ki jagah min-height behtar hai
-                // border:'1px solid red'
+                minHeight: 'auto', 
             }}>
                 {filteredMovies.length > 0 ? (
                     filteredMovies.map((movie) => (
-                        <Box key={movie.id} sx={{ 
+                        <Box key={movie.id} onClick={() => navigate(`/movie/${movie.id}`)} sx={{ 
                             backgroundColor: 'rgb(32,32,32)', 
                             borderRadius: '12px', 
                             overflow: 'hidden',
@@ -77,7 +77,7 @@ const MovieList = ({ selectedGenreId }) => {
                             boxShadow: '0 4px 15px rgba(0,0,0,0.5)',
                             height: 'auto',
                             textAlign: 'center',
-                            '&:hover': { transform: 'scale(1.03)' } // Hover effect
+                            '&:hover': { transform: 'scale(1.03)' } 
                         }}>
                             <img 
                                 src={movie.poster_path 
@@ -87,7 +87,7 @@ const MovieList = ({ selectedGenreId }) => {
                                 style={{ 
                                     width: '90%', 
                                     height: '220px', 
-                                    objectFit: 'cover', 
+                                    objectFit: 'fit', 
                                     borderRadius: '10px', 
                                     marginTop: '10px' 
                                 }}
@@ -101,7 +101,7 @@ const MovieList = ({ selectedGenreId }) => {
                                     textAlign: 'left',
                                     whiteSpace: 'nowrap',
                                     overflow: 'hidden',
-                                    textOverflow: 'ellipsis' // Lambe naam truncate ho jayenge
+                                    textOverflow: 'ellipsis' 
                                 }}>
                                     {movie.title || "UNTITLED"}
                                 </Typography>
@@ -134,6 +134,4 @@ const MovieList = ({ selectedGenreId }) => {
             </Box>
         </Box>
     );
-};
-
-export default MovieList;
+}

@@ -21,11 +21,9 @@ import { MovieContext } from '../context/MovieContext';
 <Box key={movie.id} sx={{ 
                     backgroundColor: 'rgb(32,32,32)', 
                     borderRadius: '12px', 
-                    // overflow: 'hidden',
                     transition: 'transform 0.3s',
                     cursor: 'pointer',
                     boxShadow: '0 4px 15px rgba(0,0,0,0.5)',
-                    // border:'1px solid red',
                     height:'300px',
                     width:'300px',
                     textAlign:'center'
@@ -50,7 +48,6 @@ import { MovieContext } from '../context/MovieContext';
                             {movie.release_date ? movie.release_date.split('-')[0] : 'N/A'}
                       </Typography>
                         
-                        {/* 4. Bracket () hata diye kyunki Type function nahi string hai */}
                     <Chip label="8.5" sx={{background:'rgb(11,163,187)',borderRadius:'7px',color:'white',height:'23px'}}/>
 
                        </Box>
